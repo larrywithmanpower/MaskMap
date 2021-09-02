@@ -1,26 +1,58 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <div class="relative overflow-auto min-h-full">
+      <a
+        href="#"
+        class="js-openAsideMenu openAsideMenu bg-blue-500 text-white align-middle pt-1
+        px-1 rounded-r-lg shadow hover:bg-red-500 z-20" 
+        @click.prevent="openAsideMenu"
+      >
+        <span class="material-icons text-4xl">
+          menu_open
+        </span>
+      </a>
+      <AsideMenu class="absolute top-0 bottom-0" ref="menu" @triggerMarkerPopup="openPopup" />
+      <!-- map -->
+      <MaskMap ref="map" /> 
+
+      <LightBox class="z-30" />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import { mapActions } from 'vuex';
+  import AsideMenu from '@/components/AsideMenu.vue';
+  import LightBox from '@/components/LightBox.vue';
+  import MaskMap from '@/components/MaskMap.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    components: {
+      AsideMenu,
+      LightBox,
+      MaskMap,
+    },
+    methods: {
+      openAsideMenu() {
+        const openBtn = document.querySelector('.js-openAsideMenu');
+        const asideMenu = document.querySelector('.js-asideMenu');
+        // vue不用在監聽
+        openBtn.classList.add('active');
+        asideMenu.classList.add('active');
+      },
+      ...mapActions(['fetchLocations', 'fetchPharmacies']),
+      openPopup(id) {
+        this.$refs.map.triggerPopup(id);
+      }
+    },
+    mounted() {
+      this.fetchLocations();
+      this.fetchPharmacies();
+    },
+  };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import './assets/all';
+
 </style>
