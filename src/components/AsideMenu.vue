@@ -17,7 +17,7 @@
       <ul>
         <li class="ssm:flex justify-between items-center mb-3 relative">
           <!-- arrow -->
-          <span class="material-icons absolute right-4 top-11 md:top-3.5">
+          <span class="material-icons absolute right-4 top-11 md:top-3.5 cursor-pointer">
             arrow_drop_down
           </span>
           <!-- city -->
@@ -35,7 +35,7 @@
         </li>
         <li class="ssm:flex justify-between items-center mb-3 relative">
           <!-- arrow -->
-          <span class="material-icons absolute right-4 top-11 md:top-3.5">
+          <span class="material-icons absolute right-4 top-11 md:top-3.5 cursor-pointer">
             arrow_drop_down
           </span>
           <!-- distriction -->
@@ -87,7 +87,7 @@
           v-html="keywordHighlight(s.name)"
         ></h1>
         <div class="flex items-center justify-between">
-          <ul class="text-xs text-gray-500 mb-2 w-9/12">
+          <ul class="text-xs text-gray-500 mb-2 w-8/12">
             <li class="mb-1.5">
               <i class="fas fa-head-side-mask mr-2"></i>
               成人口罩：
