@@ -3,7 +3,7 @@
 ## 使用技術
 - vue 搭配vuex 完成製作
 - tailwind 完成切版
-- 地圖使用 leatflet
+- 地圖使用 leaflet
 
 ## Project setup
 ```
